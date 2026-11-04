@@ -59,6 +59,7 @@ root.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>move(Number(b.datas
   +'.bb-var .bb-var-row a.js-insta-variant.selected:after{transform:scaleX(1)}'
   +'.bb-var .bb-var-row a.js-insta-variant.btn-variant-no-stock,.bb-var .bb-var-row a.js-insta-variant.disabled{color:#C9BBA6!important;text-decoration:line-through!important}'
   +'.bb-var-wrap+.md-borr{margin-top:16px!important}'
+  +'.bb-var .bb-var-row a.js-insta-variant:after{top:auto!important;bottom:0!important;left:22%!important;right:22%!important;width:auto!important;height:2px!important;background:#C89648!important;transform:scaleX(0)!important;transform-origin:center!important}.bb-var .bb-var-row a.js-insta-variant.selected:after{transform:scaleX(1)!important}'
   +'.md-borr-col{position:relative;display:flex;flex-direction:column;align-items:center;padding:46px 6px 18px;border-left:1px solid #F3EADB;cursor:pointer;transition:background .35s ease}'
   +'.md-borr-col:first-child{border-left:0}'
   +'.md-borr-col:hover,.md-borr-col.is-sel{background:#FBF7F0}'
