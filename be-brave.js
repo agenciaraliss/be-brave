@@ -75,12 +75,13 @@ root.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>move(Number(b.datas
   +'@keyframes mdjt3{0%{opacity:0;transform:translate(0,0) scale(.7)}18%{opacity:.66}100%{opacity:0;transform:translate(15px,-29px) scale(1.3)}}'
   +'@keyframes mdjt4{0%{opacity:0;transform:translate(0,0) scale(.7)}18%{opacity:.58}100%{opacity:0;transform:translate(23px,-13px) scale(1.3)}}'
   +'@keyframes mdjt5{0%{opacity:0;transform:translate(0,0) scale(.7)}18%{opacity:.6}100%{opacity:0;transform:translate(11px,-22px) scale(1.3)}}'
-  +'@media(max-width:575px){.md-borr-col{padding:34px 2px 14px}.md-borr-vidro{width:26px;height:46px;margin-bottom:10px}.md-borr-n{font-size:20px}.md-borr-ml{font-size:9px;letter-spacing:.14em}.md-borr-t{font-size:7px;letter-spacing:.12em}.md-spray i{width:2.1px;height:2.1px;margin:-1.05px}}';
+  +'@media(max-width:575px){.md-borr-col{padding:34px 2px 14px}.md-borr-vidro{width:26px;height:46px;margin-bottom:10px}.md-borr-n{font-size:20px}.md-borr-ml{font-size:9px;letter-spacing:.14em}.md-borr-t{font-size:7px;letter-spacing:.12em}.md-spray i{width:2.1px;height:2.1px;margin:-1.05px}}'
+  +'@media(max-width:575px){.md-borr.md-muitos .md-borr-col{padding:30px 0 13px}.md-borr.md-muitos .md-borr-vidro{margin-bottom:9px}.md-borr.md-muitos .md-borr-ml{font-size:8.5px;letter-spacing:.1em}.md-borr.md-muitos .md-borr-n{font-size:19px;margin-top:6px}.md-borr.md-muitos .md-borr-t{font-size:6.5px;letter-spacing:.06em}.md-borr.md-muitos .md-borr-bar{max-width:48px;margin-top:11px}}';
   var CLARO="%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2012%2030%27%3E%3Crect%20x%3D%273.4%27%20y%3D%270%27%20width%3D%275.2%27%20height%3D%274.4%27%20rx%3D%27.6%27%20fill%3D%27%23D9C7A6%27%2F%3E%3Crect%20x%3D%274.6%27%20y%3D%274.4%27%20width%3D%272.8%27%20height%3D%272.1%27%20fill%3D%27%23D9C7A6%27%2F%3E%3Crect%20x%3D%271.9%27%20y%3D%276.5%27%20width%3D%278.2%27%20height%3D%2721.6%27%20rx%3D%271.3%27%20fill%3D%27none%27%20stroke%3D%27%23D9C7A6%27%20stroke-width%3D%271.2%27%2F%3E%3C%2Fsvg%3E";
   var OURO=CLARO.replace(/%23D9C7A6/g,"%23C89648");
   function url(s){return 'url("data:image/svg+xml,'+s+'")';}
-  var H={1:[30,23],2:[40,31],3:[50,39],4:[58,46]};
-  var TOP={1:28,2:18,3:8,4:0},TOPM={1:23,2:15,3:7,4:0};
+  var H={1:[30,23],2:[40,31],25:[45,35],3:[50,39],4:[58,46]};
+  var TOP={1:28,2:18,25:13,3:8,4:0},TOPM={1:23,2:15,25:11,3:7,4:0};
   var size='',sizeM='';
   for(var k in H){size+='.md-borr-col[data-t="'+k+'"] .md-borr-vidro{background-size:auto '+H[k][0]+'px}.md-borr-col[data-t="'+k+'"] .md-spray{top:'+TOP[k]+'px}';sizeM+='.md-borr-col[data-t="'+k+'"] .md-borr-vidro{background-size:auto '+H[k][1]+'px}.md-borr-col[data-t="'+k+'"] .md-spray{top:'+TOPM[k]+'px}';}
   var st=document.createElement('style');st.id='md-borr-css';
@@ -89,7 +90,7 @@ root.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>move(Number(b.datas
 
   function escopo(){return document.querySelector('.js-product-container')||document;}
   function mlDe(el){return parseInt((el.textContent||'').replace(/[^\d]/g,''),10)||0;}
-  function ehMl(t){return /^\s*\d+(?:[.,]\d+)?\s*ml\s*$/i.test(t||'');}function vendidos(){var o={},vs=escopo().querySelectorAll('a.js-insta-variant');for(var i=0;i<vs.length;i++){if(ehMl(vs[i].textContent))o[mlDe(vs[i])]=1;}if(!Object.keys(o).length){var op=escopo().querySelectorAll('select.js-variation-option option');for(var j=0;j<op.length;j++){if(ehMl(op[j].textContent))o[mlDe(op[j])]=1;}}return o;}var TAB={2:28,5:70,10:140,15:210};function calc(ml){return TAB[ml]||0;}
+  function ehMl(t){return /^\s*\d+(?:[.,]\d+)?\s*ml\s*$/i.test(t||'');}function vendidos(){var o={},vs=escopo().querySelectorAll('a.js-insta-variant');for(var i=0;i<vs.length;i++){if(ehMl(vs[i].textContent))o[mlDe(vs[i])]=1;}if(!Object.keys(o).length){var op=escopo().querySelectorAll('select.js-variation-option option');for(var j=0;j<op.length;j++){if(ehMl(op[j].textContent))o[mlDe(op[j])]=1;}}return o;}var TAB={2:28,5:70,8:110,10:140,15:210},BASE=[2,5,10,15];function calc(ml){return TAB[ml]||0;}
 
   function monta(){
     var uc=escopo().querySelector('.user-content')||document.querySelector('.user-content');
@@ -104,13 +105,13 @@ root.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>move(Number(b.datas
     var v=vendidos(),mls=Object.keys(v).map(Number);
     if(!mls.length||(mls.length<2&&mls[0]>20))return;
     var porMl={};for(var q=0;q<dados.length;q++)porMl[dados[q].ml]=dados[q].n;
-    var todos={};Object.keys(TAB).forEach(function(k){todos[k]=1});mls.forEach(function(k){todos[k]=1});
+    var todos={};BASE.forEach(function(k){todos[k]=1});mls.forEach(function(k){todos[k]=1});
     dados=Object.keys(todos).map(Number).map(function(ml){return{ml:ml,n:porMl[ml]||calc(ml)}}).filter(function(d){return d.n>0});
     if(!dados.length)return;
     dados.sort(function(a,b){return a.ml-b.ml});
     var max=0;for(var j=0;j<dados.length;j++)if(dados[j].n>max)max=dados[j].n;
-    var box=document.createElement('div');box.className='md-borr';box.style.setProperty('--n',dados.length);
-    var tiers=dados.length>=4?[1,2,3,4]:(dados.length===1?[3]:[1,3,4]);var html='';
+    var box=document.createElement('div');box.className='md-borr'+(dados.length>4?' md-muitos':'');box.style.setProperty('--n',dados.length);
+    var tiers=dados.length>=5?[1,2,25,3,4]:dados.length===4?[1,2,3,4]:(dados.length===1?[3]:[1,3,4]);var html='';
     for(var k2=0;k2<dados.length;k2++){
       var t=tiers[Math.min(k2,tiers.length-1)]+(dados.length>4&&k2>=4?0:0),pc=Math.round(dados[k2].n/max*100);
       html+='<div class="md-borr-col" data-t="'+t+'" data-ml="'+dados[k2].ml+'">'
@@ -132,7 +133,7 @@ root.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>move(Number(b.datas
     if(lista&&!lista.querySelector('li'))lista.remove();
     var cols=box.querySelectorAll('.md-borr-col');
     for(var c=0;c<cols.length;c++){
-      var tt=+cols[c].dataset.t,sp=cols[c].querySelector('.md-spray'),qtd=tt===1?5:(tt===2?6:(tt===3?7:9));
+      var tt=+cols[c].dataset.t,sp=cols[c].querySelector('.md-spray'),qtd=tt===1?5:(tt===2||tt===25?6:(tt===3?7:9));
       for(var g=0;g<qtd;g++){var el=document.createElement('i');el.style.animationName='mdjt'+((g%5)+1);el.style.animationDelay=(g*0.035).toFixed(3)+'s';sp.appendChild(el);}
       cols[c].addEventListener('click',(function(col){return function(){
         var vs=escopo().querySelectorAll('a.js-insta-variant');
