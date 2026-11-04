@@ -104,7 +104,8 @@ root.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>move(Number(b.datas
     var v=vendidos(),mls=Object.keys(v).map(Number);
     if(!mls.length||(mls.length<2&&mls[0]>20))return;
     var porMl={};for(var q=0;q<dados.length;q++)porMl[dados[q].ml]=dados[q].n;
-    dados=mls.map(function(ml){return{ml:ml,n:porMl[ml]||calc(ml)}}).filter(function(d){return d.n>0});
+    var todos={};Object.keys(TAB).forEach(function(k){todos[k]=1});mls.forEach(function(k){todos[k]=1});
+    dados=Object.keys(todos).map(Number).map(function(ml){return{ml:ml,n:porMl[ml]||calc(ml)}}).filter(function(d){return d.n>0});
     if(!dados.length)return;
     dados.sort(function(a,b){return a.ml-b.ml});
     var max=0;for(var j=0;j<dados.length;j++)if(dados[j].n>max)max=dados[j].n;
@@ -123,9 +124,7 @@ root.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>move(Number(b.datas
     var lista=alvos.length&&alvos[0].tagName==='LI'?alvos[0].parentElement:null;
     var lado=escopo().querySelector('.js-product-form .js-product-variants');
     if(lado){lado.after(box);
-      var as=[].slice.call(escopo().querySelectorAll('.js-product-variants-group a.js-insta-variant')).sort(function(a,b){return mlDe(a)-mlDe(b)}),ok=as.length===dados.length;
-      dados.sort(function(a,b){return a.ml-b.ml});
-      for(var z=0;ok&&z<as.length;z++)if(mlDe(as[z])!==dados[z].ml)ok=false;
+      var as=[].slice.call(escopo().querySelectorAll('.js-product-variants-group a.js-insta-variant')).sort(function(a,b){return mlDe(a)-mlDe(b)}),ok=as.length>0&&as.every(function(a){return ehMl(a.textContent)});
       if(ok){var g=as[0].closest('.js-product-variants-group'),row=document.createElement('div');row.className='bb-var-row';row.style.setProperty('--n',as.length);as[0].parentElement.insertBefore(row,as[0]);for(var z2=0;z2<as.length;z2++)row.appendChild(as[z2]);g.classList.add('bb-var');lado.classList.add('bb-var-wrap');}
     }
     else if(alvos.length)(lista||alvos[0]).parentElement.insertBefore(box,lista||alvos[0]);else return;
