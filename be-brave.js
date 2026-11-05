@@ -26,7 +26,6 @@ n.querySelector("[data-open]").onclick=function(){r.classList.remove("press"),r.
 document.querySelectorAll('#vg-video-live video,#vg-video-story video').forEach(v=>{v.pause();v.removeAttribute('src');v.load()});document.getElementById('vg-video-live')?.remove();document.getElementById('vg-video-live-css')?.remove();document.getElementById('vg-video-story')?.remove();
 const base='https://res.cloudinary.com/dlukiyh4l/video/upload/';
 const items=[
-{file:'v1793810620/snapinsta-1793750607989_rg69gn',name:'Dicas Be Brave',label:'Encontre seu próximo perfume',path:'/produtos/'},
 {file:'v1793810620/snapinsta-1792369489507_t7fh7l',name:'Perfumes que encantam',label:'Encontre seu próximo perfume',path:'/produtos/'},
 {file:'v1793810628/IMG_4344_xm3ww9',name:'Escolhas da Be Brave',label:'Encontre seu próximo perfume',path:'/produtos/'}
 ];
